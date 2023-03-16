@@ -104,14 +104,14 @@ public class Baja_Producto extends javax.swing.JFrame {
             ban = producto_db.regresaProducto(clave_prod);
             if (ban) {
                 producto_db.bajaProducto(clave_prod);
-                JOptionPane.showMessageDialog(null, "EL producto fue dado de baja con éxito","",JOptionPane.INFORMATION_MESSAGE);
-                clave_Producto.setText("");
+                JOptionPane.showMessageDialog(null, "El producto fue dado de baja con éxito","",JOptionPane.INFORMATION_MESSAGE);
             }
             else {
                 JOptionPane.showMessageDialog(null, "No se encontró un producto con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
             }
+            clave_Producto.setText("");
         } else {
-            JOptionPane.showMessageDialog(null, "No se encontró un producto con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_bajaProductoActionPerformed
 

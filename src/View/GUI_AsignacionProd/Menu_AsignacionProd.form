@@ -70,7 +70,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="altaProdDepto">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Alta de un Producto a un Departamento"/>
+        <Property name="text" type="java.lang.String" value="Alta de un Producto en un Departamento"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="altaProdDeptoActionPerformed"/>

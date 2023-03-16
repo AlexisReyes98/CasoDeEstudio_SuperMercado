@@ -103,14 +103,14 @@ public class Baja_Depto extends javax.swing.JFrame {
             ban = depto_db.regresaDepto(clave_depto);
             if (ban) {
                 depto_db.bajaDepto(clave_depto);
-                JOptionPane.showMessageDialog(null, "EL departamento fue dado de baja con éxito","",JOptionPane.INFORMATION_MESSAGE);
-                clave_Depto.setText("");
+                JOptionPane.showMessageDialog(null, "El departamento fue dado de baja con éxito","",JOptionPane.INFORMATION_MESSAGE);
             }
             else {
                 JOptionPane.showMessageDialog(null, "No se encontró un departamento con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
             }
+            clave_Depto.setText("");
         } else {
-            JOptionPane.showMessageDialog(null, "No se encontró un departamento con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_bajaDeptoActionPerformed
 

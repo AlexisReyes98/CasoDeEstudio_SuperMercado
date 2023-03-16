@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Productos_DB {
     /*
-    *   Sistema que administra productos del super
+    *   Sistema que administra los productos del super
     */
     
     // Código para INSERTAR un nuevo producto en la tabla de la BD

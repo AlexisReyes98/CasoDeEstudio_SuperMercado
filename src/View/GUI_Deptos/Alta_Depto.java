@@ -126,17 +126,24 @@ public class Alta_Depto extends javax.swing.JFrame {
 
     private void altaDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaDepartamentoActionPerformed
         if (!"".equals(altaClave.getText()) && !"".equals(altaNombre.getText()) && !"".equals(altaJefe.getText())) {
-            Departamento d = new Departamento();
-            d.setClaveDepto(altaClave.getText());
-            d.setNombre(altaNombre.getText());
-            d.setJefe(altaJefe.getText());
-            depto_db.altaDepto(d);
-            JOptionPane.showMessageDialog(null, "El departamento fue dado de alta con éxito","",JOptionPane.INFORMATION_MESSAGE);
+            String clave_depto = altaClave.getText();
+            boolean banDepto;
+            banDepto = depto_db.regresaDepto(clave_depto);
+            if (banDepto) {
+                JOptionPane.showMessageDialog(null, "El departamento con la clave proporcionada ya existe","",JOptionPane.ERROR_MESSAGE);
+            } else {
+                Departamento d = new Departamento();
+                d.setClaveDepto(altaClave.getText());
+                d.setNombre(altaNombre.getText());
+                d.setJefe(altaJefe.getText());
+                depto_db.altaDepto(d);
+                JOptionPane.showMessageDialog(null, "El departamento fue dado de alta con éxito","",JOptionPane.INFORMATION_MESSAGE);
+            }
             altaClave.setText("");
             altaNombre.setText("");
             altaJefe.setText("");
         } else {
-            JOptionPane.showMessageDialog(null, "EL departamento no fue dado de alta","",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_altaDepartamentoActionPerformed
 

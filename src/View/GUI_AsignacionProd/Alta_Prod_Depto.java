@@ -1,11 +1,18 @@
 
 package View.GUI_AsignacionProd;
 
+import ConectionSQL.*;
+import Model.Asignacion;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alexis
  */
 public class Alta_Prod_Depto extends javax.swing.JFrame {
+    AsigProd_DB asigProd_db = new AsigProd_DB();
+    Deptos_DB depto_db = new Deptos_DB();
+    Productos_DB producto_db = new Productos_DB();
 
     /**
      * Creates new form Alta_Prod_Depto
@@ -27,10 +34,15 @@ public class Alta_Prod_Depto extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         regresar_MenuAsig = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        altaClaveProd = new javax.swing.JTextField();
+        altaClaveDepto = new javax.swing.JTextField();
+        altaAsigProd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Alta de un producto a un departamento:");
+        jLabel1.setText("Alta de un producto en un departamento:");
 
         regresar_MenuAsig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Actualizar.png"))); // NOI18N
         regresar_MenuAsig.setText("Regresar a Menú Asisgnación de Productos");
@@ -40,25 +52,60 @@ public class Alta_Prod_Depto extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Clave del producto");
+
+        jLabel3.setText("Clave del departamento");
+
+        altaAsigProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GuardarTodo.png"))); // NOI18N
+        altaAsigProd.setText("Dar de alta");
+        altaAsigProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                altaAsigProdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(regresar_MenuAsig))
-                .addContainerGap(73, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(regresar_MenuAsig)
+                            .addComponent(altaAsigProd)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(altaClaveDepto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(altaClaveProd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel1)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(altaClaveProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(altaClaveDepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(altaAsigProd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(regresar_MenuAsig)
-                .addGap(37, 37, 37))
+                .addGap(46, 46, 46))
         );
 
         pack();
@@ -68,6 +115,42 @@ public class Alta_Prod_Depto extends javax.swing.JFrame {
         new Menu_AsignacionProd().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_regresar_MenuAsigActionPerformed
+
+    private void altaAsigProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaAsigProdActionPerformed
+        double precioInicial = -1;
+        boolean banDepto;
+        boolean banProd;
+        boolean banAsigProd;
+        if (!"".equals(altaClaveProd.getText()) && !"".equals(altaClaveDepto.getText())) {
+            String clave_depto = altaClaveDepto.getText();
+            banDepto = depto_db.regresaDepto(clave_depto);
+            if (banDepto) {
+                int clave_prod = Integer.parseInt(altaClaveProd.getText());
+                banProd = producto_db.regresaProducto(clave_prod);
+                if (banProd) {
+                    banAsigProd = asigProd_db.regresaProducto(clave_prod);
+                    if (banAsigProd) {
+                        JOptionPane.showMessageDialog(null, "El producto ya estaba asignado","",JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        Asignacion a = new Asignacion();
+                        a.setClaveProd(clave_prod);
+                        a.setPrecio(precioInicial);
+                        a.setClaveDepto(clave_depto);
+                        asigProd_db.altaAsignacionProducto(a);
+                        JOptionPane.showMessageDialog(null, "Se asignó el producto al depto","",JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existe un producto con esa clave","",JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay depto con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
+            }
+            altaClaveProd.setText("");
+            altaClaveDepto.setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_altaAsigProdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,7 +188,12 @@ public class Alta_Prod_Depto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton altaAsigProd;
+    private javax.swing.JTextField altaClaveDepto;
+    private javax.swing.JTextField altaClaveProd;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton regresar_MenuAsig;
     // End of variables declaration//GEN-END:variables
 }

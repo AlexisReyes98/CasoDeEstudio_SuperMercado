@@ -127,7 +127,7 @@ public class Alta_Producto extends javax.swing.JFrame {
             altaNombre.setText("");
             altaProveedor.setText("");
         } else {
-            JOptionPane.showMessageDialog(null, "EL producto no fue dado de alta","",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_altaProductoActionPerformed
 

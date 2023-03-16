@@ -1,11 +1,17 @@
 
 package View.GUI_AsignacionProd;
 
+import ConectionSQL.AsigProd_DB;
+import ConectionSQL.Deptos_DB;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alexis
  */
 public class Baja_Prod_Depto extends javax.swing.JFrame {
+    AsigProd_DB asigProd_db = new AsigProd_DB();
+    Deptos_DB depto_db = new Deptos_DB();
 
     /**
      * Creates new form Baja_Prod_Depto
@@ -27,6 +33,11 @@ public class Baja_Prod_Depto extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         regresar_MenuAsig = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        bajaClaveProd = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        bajaClaveDepto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,25 +51,60 @@ public class Baja_Prod_Depto extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Clave del producto");
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Borrar.png"))); // NOI18N
+        jButton1.setText("Dar de baja");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Clave del departamento");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(regresar_MenuAsig)
-                    .addComponent(jLabel1))
-                .addContainerGap(46, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(bajaClaveProd)
+                                    .addComponent(bajaClaveDepto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(regresar_MenuAsig)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel1)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(bajaClaveProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(bajaClaveDepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(jButton1)
+                .addGap(30, 30, 30)
                 .addComponent(regresar_MenuAsig)
-                .addGap(41, 41, 41))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -68,6 +114,31 @@ public class Baja_Prod_Depto extends javax.swing.JFrame {
         new Menu_AsignacionProd().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_regresar_MenuAsigActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        boolean banDepto;
+        boolean banAsigProd;
+        if (!"".equals(bajaClaveProd.getText()) && !"".equals(bajaClaveDepto.getText())) {
+            String clave_depto = bajaClaveDepto.getText();
+            banDepto = depto_db.regresaDepto(clave_depto);
+            if (banDepto) {
+                int clave_prod = Integer.parseInt(bajaClaveProd.getText());
+                banAsigProd = asigProd_db.regresaProducto(clave_prod);
+                if (banAsigProd) {
+                    asigProd_db.bajaAsignacionProducto(clave_prod);
+                    JOptionPane.showMessageDialog(null, "El producto fue dado de baja del Departamento","",JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "El producto no está en el depto","",JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay depto con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
+            }
+            bajaClaveProd.setText("");
+            bajaClaveDepto.setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,7 +176,12 @@ public class Baja_Prod_Depto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField bajaClaveDepto;
+    private javax.swing.JTextField bajaClaveProd;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton regresar_MenuAsig;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,10 +16,10 @@ import java.util.ArrayList;
  */
 public class Deptos_DB {
     /*
-    *   Sistema que administra departamentos del super
+    *   Sistema que administra los departamentos del super
     */
     
-    // Código para INSERTAR un nuevo producto en la tabla de la BD
+    // Código para INSERTAR un nuevo departamento en la tabla de la BD
     public void altaDepto(Departamento depto) {
         Connection cnx = DataBaseConexion.getConnection();
         try {
@@ -70,7 +70,7 @@ public class Deptos_DB {
         return deptos;
     }
     
-    // Código para utilizar el Procedimiento almacenado de Oracle PL/SQL (BAJA_PRODUCTO)
+    // Código para utilizar el Procedimiento almacenado de Oracle PL/SQL (BAJA_DEPTO)
     public void bajaDepto(String clave_depto) {
         Connection cnx = DataBaseConexion.getConnection();
         try {
@@ -94,7 +94,7 @@ public class Deptos_DB {
         }
     }
     
-    // Código para BUSCAR un producto en la tabla de la BD
+    // Código para BUSCAR un departamento en la tabla de la BD
     public boolean regresaDepto(String clave_depto) {
         Connection cnx = DataBaseConexion.getConnection();
         Departamento depto = new Departamento();

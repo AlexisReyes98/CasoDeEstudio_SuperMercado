@@ -44,7 +44,7 @@ public class Menu_AsignacionProd extends javax.swing.JFrame {
             }
         });
 
-        altaProdDepto.setText("Alta de un Producto a un Departamento");
+        altaProdDepto.setText("Alta de un Producto en un Departamento");
         altaProdDepto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 altaProdDeptoActionPerformed(evt);
