@@ -1,7 +1,7 @@
 
 package View.GUI_Productos;
 
-import ConectionSQL.SuperBD;
+import ConectionSQL.Productos_DB;
 import Model.Producto;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -11,20 +11,20 @@ import javax.swing.table.DefaultTableModel;
  * @author alexis
  */
 public class Consultar_Productos extends javax.swing.JFrame {
-    SuperBD super_db = new SuperBD();
+    Productos_DB producto_db = new Productos_DB();
 
     /**
      * Creates new form Consultar_Productos
      */
     public Consultar_Productos() {
         initComponents();
-        this.setTitle("Control de los Productos");
+        this.setTitle("Control de Productos");
         this.setLocationRelativeTo(null);
     }
     
     public void listarDatos() { // Con esta función se muestra la tabla
         ArrayList<Producto> productos;
-        productos = super_db.consultarProductos();
+        productos = producto_db.consultarProductos();
         DefaultTableModel tb = (DefaultTableModel)tablaProductos.getModel();
         for(Producto p: productos) {
             tb.addRow(new Object[]{p.getClaveProd(),p.getNombre(),p.getProveedor()});
@@ -54,7 +54,7 @@ public class Consultar_Productos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Consultar Productos:");
+        jLabel1.setText("Consulta de productos:");
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,7 +78,7 @@ public class Consultar_Productos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaProductos);
 
         verProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Lupa.png"))); // NOI18N
-        verProductos.setText("Consultar Productos");
+        verProductos.setText("Consulta de Productos");
         verProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verProductosActionPerformed(evt);
@@ -105,13 +105,12 @@ public class Consultar_Productos extends javax.swing.JFrame {
                 .addGap(47, 47, 47))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(241, 241, 241))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(verProductos)
-                        .addGap(211, 211, 211))))
+                .addComponent(verProductos)
+                .addGap(211, 211, 211))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(235, 235, 235)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

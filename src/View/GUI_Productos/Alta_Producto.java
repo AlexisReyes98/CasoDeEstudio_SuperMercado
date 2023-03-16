@@ -1,7 +1,7 @@
 
 package View.GUI_Productos;
 
-import ConectionSQL.SuperBD;
+import ConectionSQL.Productos_DB;
 import Model.Producto;
 import javax.swing.JOptionPane;
 
@@ -10,14 +10,14 @@ import javax.swing.JOptionPane;
  * @author alexis
  */
 public class Alta_Producto extends javax.swing.JFrame {
-    SuperBD super_db = new SuperBD();
+    Productos_DB producto_db = new Productos_DB();
 
     /**
      * Creates new form Alta_Producto
      */
     public Alta_Producto() {
         initComponents();
-        this.setTitle("Control de los Productos");
+        this.setTitle("Control de Productos");
         this.setLocationRelativeTo(null);
     }
 
@@ -117,12 +117,12 @@ public class Alta_Producto extends javax.swing.JFrame {
     private void altaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaProductoActionPerformed
         int claveProd;
         if (!"".equals(altaNombre.getText()) && !"".equals(altaProveedor.getText())) {
-            claveProd = super_db.generaClaveProd();
+            claveProd = producto_db.generaClaveProd();
             Producto p = new Producto();
             p.setClaveProd(claveProd);
             p.setNombre(altaNombre.getText());
             p.setProveedor(altaProveedor.getText());
-            super_db.altaProducto(p);
+            producto_db.altaProducto(p);
             JOptionPane.showMessageDialog(null, "El producto fue dado de alta con la clave: "+claveProd,"",JOptionPane.INFORMATION_MESSAGE);
             altaNombre.setText("");
             altaProveedor.setText("");

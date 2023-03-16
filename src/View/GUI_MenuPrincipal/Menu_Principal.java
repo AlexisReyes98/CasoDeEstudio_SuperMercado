@@ -2,7 +2,7 @@
 package View.GUI_MenuPrincipal;
 
 import View.GUI_AsignacionProd.Menu_AsignacionProd;
-import View.GUI_Departamentos.Menu_Departamentos;
+import View.GUI_Deptos.Menu_Deptos;
 import View.GUI_Precios.Menu_Precios;
 import View.GUI_Productos.Menu_Productos;
 
@@ -39,7 +39,7 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Menu de opciones");
+        jLabel1.setText("Menú de opciones");
 
         control_Productos.setText("Control de Productos");
         control_Productos.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +126,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_control_ProductosActionPerformed
 
     private void control_DepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_control_DepartamentosActionPerformed
-        new Menu_Departamentos().setVisible(true);
+        new Menu_Deptos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_control_DepartamentosActionPerformed
 

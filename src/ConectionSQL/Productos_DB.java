@@ -14,9 +14,9 @@ import java.util.ArrayList;
  *
  * @author alexis
  */
-public class SuperBD {
+public class Productos_DB {
     /*
-    *   Sistema que administra productos de un super
+    *   Sistema que administra productos del super
     */
     
     // Código para INSERTAR un nuevo producto en la tabla de la BD
@@ -41,7 +41,7 @@ public class SuperBD {
         }
     }
     
-    // Código para generar una nuva clave del producto
+    // Código para generar una nueva clave del producto
     public int generaClaveProd() {
         int clave = 0;
         Connection cnx = DataBaseConexion.getConnection();
@@ -127,6 +127,36 @@ public class SuperBD {
                 System.out.println("Error: " + ex.getMessage());
             }
         }
+    }
+    
+    // Código para BUSCAR un producto en la tabla de la BD
+    public boolean regresaProducto(int clave_prod) {
+        Connection cnx = DataBaseConexion.getConnection();
+        Producto prod = new Producto();
+        boolean ban = false;
+        try {
+            PreparedStatement pst = cnx.prepareStatement("SELECT CLAVE_PROD,NOMBRE,PROVEEDOR"
+                    + " FROM PRODUCTOS WHERE CLAVE_PROD like (?)");
+            pst.setInt(1, clave_prod);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                prod.setClaveProd(rs.getInt("CLAVE_PROD"));
+                prod.setNombre(rs.getString("NOMBRE"));
+                prod.setProveedor(rs.getString("PROVEEDOR"));
+                ban = true;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("Error al mostrar el producto");
+        } finally {
+            try {
+                cnx.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex.getMessage());
+            }
+        }
+        
+        return ban;
     }
     
 }

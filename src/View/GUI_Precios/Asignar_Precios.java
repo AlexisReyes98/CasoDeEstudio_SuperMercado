@@ -1,20 +1,21 @@
-
-package View.GUI_Departamentos;
-
-import View.GUI_MenuPrincipal.Menu_Principal;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package View.GUI_Precios;
 
 /**
  *
  * @author alexis
  */
-public class Menu_Departamentos extends javax.swing.JFrame {
+public class Asignar_Precios extends javax.swing.JFrame {
 
     /**
-     * Creates new form Departamentos
+     * Creates new form Asignar_Precios
      */
-    public Menu_Departamentos() {
+    public Asignar_Precios() {
         initComponents();
-        this.setTitle("Control de los Departamentos");
+        this.setTitle("Asignación de Precios a Productos");
         this.setLocationRelativeTo(null);
     }
 
@@ -28,17 +29,17 @@ public class Menu_Departamentos extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        regresar_Menu = new javax.swing.JButton();
+        regresar_MenuPrecios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Menú Departamentos");
+        jLabel1.setText("Asignar un precio a un producto:");
 
-        regresar_Menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Actualizar.png"))); // NOI18N
-        regresar_Menu.setText("Regresar a Menú");
-        regresar_Menu.addActionListener(new java.awt.event.ActionListener() {
+        regresar_MenuPrecios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Actualizar.png"))); // NOI18N
+        regresar_MenuPrecios.setText("Regresar a Menú Precios");
+        regresar_MenuPrecios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regresar_MenuActionPerformed(evt);
+                regresar_MenuPreciosActionPerformed(evt);
             }
         });
 
@@ -47,31 +48,29 @@ public class Menu_Departamentos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(200, Short.MAX_VALUE)
-                .addComponent(regresar_Menu)
-                .addGap(22, 22, 22))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(79, 79, 79)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(regresar_MenuPrecios)
+                    .addComponent(jLabel1))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
-                .addComponent(regresar_Menu)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addComponent(regresar_MenuPrecios)
+                .addGap(46, 46, 46))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void regresar_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresar_MenuActionPerformed
-        new Menu_Principal().setVisible(true);
+    private void regresar_MenuPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresar_MenuPreciosActionPerformed
+        new Menu_Precios().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_regresar_MenuActionPerformed
+    }//GEN-LAST:event_regresar_MenuPreciosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,27 +89,26 @@ public class Menu_Departamentos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu_Departamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Asignar_Precios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu_Departamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Asignar_Precios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu_Departamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Asignar_Precios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu_Departamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Asignar_Precios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu_Departamentos().setVisible(true);
+                new Asignar_Precios().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton regresar_Menu;
+    private javax.swing.JButton regresar_MenuPrecios;
     // End of variables declaration//GEN-END:variables
 }

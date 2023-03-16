@@ -1,7 +1,7 @@
 
 package View.GUI_Productos;
 
-import ConectionSQL.SuperBD;
+import ConectionSQL.Productos_DB;
 import javax.swing.JOptionPane;
 
 /**
@@ -9,14 +9,14 @@ import javax.swing.JOptionPane;
  * @author alexis
  */
 public class Baja_Producto extends javax.swing.JFrame {
-    SuperBD super_db = new SuperBD();
+    Productos_DB producto_db = new Productos_DB();
 
     /**
      * Creates new form Baja_Producto
      */
     public Baja_Producto() {
         initComponents();
-        this.setTitle("Control de los Productos");
+        this.setTitle("Control de Productos");
         this.setLocationRelativeTo(null);
     }
 
@@ -100,9 +100,16 @@ public class Baja_Producto extends javax.swing.JFrame {
     private void bajaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bajaProductoActionPerformed
         if (!"".equals(clave_Producto.getText())) {
             int clave_prod = Integer.parseInt(clave_Producto.getText());
-            super_db.bajaProducto(clave_prod);
-            JOptionPane.showMessageDialog(null, "EL producto fue dado de baja","",JOptionPane.INFORMATION_MESSAGE);
-            clave_Producto.setText("");
+            boolean ban;
+            ban = producto_db.regresaProducto(clave_prod);
+            if (ban) {
+                producto_db.bajaProducto(clave_prod);
+                JOptionPane.showMessageDialog(null, "EL producto fue dado de baja con éxito","",JOptionPane.INFORMATION_MESSAGE);
+                clave_Producto.setText("");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "No se encontró un producto con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "No se encontró un producto con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
         }

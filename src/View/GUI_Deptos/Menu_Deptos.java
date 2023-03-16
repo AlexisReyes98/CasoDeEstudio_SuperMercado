@@ -1,5 +1,5 @@
 
-package View.GUI_AsignacionProd;
+package View.GUI_Deptos;
 
 import View.GUI_MenuPrincipal.Menu_Principal;
 
@@ -7,14 +7,14 @@ import View.GUI_MenuPrincipal.Menu_Principal;
  *
  * @author alexis
  */
-public class Menu_AsignacionProd extends javax.swing.JFrame {
+public class Menu_Deptos extends javax.swing.JFrame {
 
     /**
-     * Creates new form Asignacion
+     * Creates new form Departamentos
      */
-    public Menu_AsignacionProd() {
+    public Menu_Deptos() {
         initComponents();
-        this.setTitle("Asignación de Productos a Departamentos");
+        this.setTitle("Control de Departamentos");
         this.setLocationRelativeTo(null);
     }
 
@@ -29,12 +29,13 @@ public class Menu_AsignacionProd extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         regresar_Menu = new javax.swing.JButton();
-        altaProdDepto = new javax.swing.JButton();
-        bajaProdDepto = new javax.swing.JButton();
+        altaDepto = new javax.swing.JButton();
+        verDeptos = new javax.swing.JButton();
+        bajaDepto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Menú Asignación de Productos");
+        jLabel1.setText("Menú Departamentos");
 
         regresar_Menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Actualizar.png"))); // NOI18N
         regresar_Menu.setText("Regresar a Menú");
@@ -44,17 +45,24 @@ public class Menu_AsignacionProd extends javax.swing.JFrame {
             }
         });
 
-        altaProdDepto.setText("Alta de un Producto a un Departamento");
-        altaProdDepto.addActionListener(new java.awt.event.ActionListener() {
+        altaDepto.setText("Alta de Departamentos");
+        altaDepto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                altaProdDeptoActionPerformed(evt);
+                altaDeptoActionPerformed(evt);
             }
         });
 
-        bajaProdDepto.setText("Baja de un Producto en un Departamento");
-        bajaProdDepto.addActionListener(new java.awt.event.ActionListener() {
+        verDeptos.setText("Consulta de Departamentos");
+        verDeptos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bajaProdDeptoActionPerformed(evt);
+                verDeptosActionPerformed(evt);
+            }
+        });
+
+        bajaDepto.setText("Baja de Departamentos");
+        bajaDepto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bajaDeptoActionPerformed(evt);
             }
         });
 
@@ -62,27 +70,30 @@ public class Menu_AsignacionProd extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(99, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(regresar_Menu)
-                    .addComponent(jLabel1)
-                    .addComponent(bajaProdDepto)
-                    .addComponent(altaProdDepto))
-                .addContainerGap(70, Short.MAX_VALUE))
+                    .addComponent(bajaDepto)
+                    .addComponent(verDeptos)
+                    .addComponent(altaDepto)
+                    .addComponent(jLabel1))
+                .addGap(95, 95, 95))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addComponent(altaProdDepto)
-                .addGap(32, 32, 32)
-                .addComponent(bajaProdDepto)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
+                .addComponent(altaDepto)
+                .addGap(18, 18, 18)
+                .addComponent(verDeptos)
+                .addGap(18, 18, 18)
+                .addComponent(bajaDepto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(regresar_Menu)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -93,15 +104,20 @@ public class Menu_AsignacionProd extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_regresar_MenuActionPerformed
 
-    private void altaProdDeptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaProdDeptoActionPerformed
-        new Alta_Prod_Depto().setVisible(true);
+    private void altaDeptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaDeptoActionPerformed
+        new Alta_Depto().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_altaProdDeptoActionPerformed
+    }//GEN-LAST:event_altaDeptoActionPerformed
 
-    private void bajaProdDeptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bajaProdDeptoActionPerformed
-        new Baja_Prod_Depto().setVisible(true);
+    private void verDeptosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDeptosActionPerformed
+        new Consultar_Deptos().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_bajaProdDeptoActionPerformed
+    }//GEN-LAST:event_verDeptosActionPerformed
+
+    private void bajaDeptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bajaDeptoActionPerformed
+        new Baja_Depto().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bajaDeptoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,29 +136,32 @@ public class Menu_AsignacionProd extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu_AsignacionProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_Deptos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu_AsignacionProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_Deptos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu_AsignacionProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_Deptos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu_AsignacionProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_Deptos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu_AsignacionProd().setVisible(true);
+                new Menu_Deptos().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton altaProdDepto;
-    private javax.swing.JButton bajaProdDepto;
+    private javax.swing.JButton altaDepto;
+    private javax.swing.JButton bajaDepto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton regresar_Menu;
+    private javax.swing.JButton verDeptos;
     // End of variables declaration//GEN-END:variables
 }

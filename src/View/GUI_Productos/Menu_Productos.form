@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="115" max="32767" attributes="0"/>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="altaProducto" min="-2" max="-2" attributes="0"/>
@@ -62,7 +62,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="altaProducto">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Alta Producto"/>
+        <Property name="text" type="java.lang.String" value="Alta de Productos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="altaProductoActionPerformed"/>
@@ -70,7 +70,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="verProductos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Consultar productos"/>
+        <Property name="text" type="java.lang.String" value="Consulta de Productos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verProductosActionPerformed"/>
@@ -78,7 +78,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="bajaProducto">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Baja Productos"/>
+        <Property name="text" type="java.lang.String" value="Baja de Productos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bajaProductoActionPerformed"/>

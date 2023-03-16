@@ -14,7 +14,7 @@ public class Menu_Productos extends javax.swing.JFrame {
      */
     public Menu_Productos() {
         initComponents();
-        this.setTitle("Control de los Productos");
+        this.setTitle("Control de Productos");
         this.setLocationRelativeTo(null);
     }
 
@@ -37,21 +37,21 @@ public class Menu_Productos extends javax.swing.JFrame {
 
         jLabel1.setText("Menú Productos");
 
-        altaProducto.setText("Alta Producto");
+        altaProducto.setText("Alta de Productos");
         altaProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 altaProductoActionPerformed(evt);
             }
         });
 
-        verProductos.setText("Consultar productos");
+        verProductos.setText("Consulta de Productos");
         verProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verProductosActionPerformed(evt);
             }
         });
 
-        bajaProducto.setText("Baja Productos");
+        bajaProducto.setText("Baja de Productos");
         bajaProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bajaProductoActionPerformed(evt);
@@ -71,7 +71,7 @@ public class Menu_Productos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+                .addContainerGap(114, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(altaProducto)

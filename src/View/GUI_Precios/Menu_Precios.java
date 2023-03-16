@@ -14,7 +14,7 @@ public class Menu_Precios extends javax.swing.JFrame {
      */
     public Menu_Precios() {
         initComponents();
-        this.setTitle("Asignación de Precios a los Productos");
+        this.setTitle("Asignación de Precios a Productos");
         this.setLocationRelativeTo(null);
     }
 
@@ -29,6 +29,8 @@ public class Menu_Precios extends javax.swing.JFrame {
 
         regresar_Menu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        asigPrecio = new javax.swing.JButton();
+        verPrecios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,29 +42,47 @@ public class Menu_Precios extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Menú Precios");
+        jLabel1.setText("Menú Asignación de Precios");
+
+        asigPrecio.setText("Asignar un Precio a un Producto");
+        asigPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asigPrecioActionPerformed(evt);
+            }
+        });
+
+        verPrecios.setText("Consultar Precios de los Productos de un Departamento");
+        verPrecios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verPreciosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(194, Short.MAX_VALUE)
-                .addComponent(regresar_Menu)
-                .addGap(28, 28, 28))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(61, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(regresar_Menu)
+                    .addComponent(jLabel1)
+                    .addComponent(verPrecios)
+                    .addComponent(asigPrecio))
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(asigPrecio)
+                .addGap(36, 36, 36)
+                .addComponent(verPrecios)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(regresar_Menu)
-                .addGap(30, 30, 30))
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -72,6 +92,16 @@ public class Menu_Precios extends javax.swing.JFrame {
         new Menu_Principal().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_regresar_MenuActionPerformed
+
+    private void asigPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asigPrecioActionPerformed
+        new Asignar_Precios().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_asigPrecioActionPerformed
+
+    private void verPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPreciosActionPerformed
+        new Consultar_Precios().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_verPreciosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,7 +140,9 @@ public class Menu_Precios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton asigPrecio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton regresar_Menu;
+    private javax.swing.JButton verPrecios;
     // End of variables declaration//GEN-END:variables
 }
