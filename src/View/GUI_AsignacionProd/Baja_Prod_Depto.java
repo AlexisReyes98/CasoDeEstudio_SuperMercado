@@ -133,11 +133,11 @@ public class Baja_Prod_Depto extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "No hay depto con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
             }
-            bajaClaveProd.setText("");
-            bajaClaveDepto.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
         }
+        bajaClaveProd.setText("");
+        bajaClaveDepto.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

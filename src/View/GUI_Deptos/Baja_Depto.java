@@ -108,10 +108,10 @@ public class Baja_Depto extends javax.swing.JFrame {
             else {
                 JOptionPane.showMessageDialog(null, "No se encontró un departamento con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
             }
-            clave_Depto.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
         }
+        clave_Depto.setText("");
     }//GEN-LAST:event_bajaDeptoActionPerformed
 
     private void regresar_MenuDeptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresar_MenuDeptoActionPerformed

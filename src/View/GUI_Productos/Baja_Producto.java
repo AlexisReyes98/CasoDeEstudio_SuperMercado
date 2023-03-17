@@ -109,10 +109,10 @@ public class Baja_Producto extends javax.swing.JFrame {
             else {
                 JOptionPane.showMessageDialog(null, "No se encontró un producto con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
             }
-            clave_Producto.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
         }
+        clave_Producto.setText("");
     }//GEN-LAST:event_bajaProductoActionPerformed
 
     private void regresar_MenuProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresar_MenuProdActionPerformed

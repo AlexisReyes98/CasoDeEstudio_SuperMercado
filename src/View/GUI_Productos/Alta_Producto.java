@@ -124,11 +124,11 @@ public class Alta_Producto extends javax.swing.JFrame {
             p.setProveedor(altaProveedor.getText());
             producto_db.altaProducto(p);
             JOptionPane.showMessageDialog(null, "El producto fue dado de alta con la clave: "+claveProd,"",JOptionPane.INFORMATION_MESSAGE);
-            altaNombre.setText("");
-            altaProveedor.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
         }
+        altaNombre.setText("");
+        altaProveedor.setText("");
     }//GEN-LAST:event_altaProductoActionPerformed
 
     /**

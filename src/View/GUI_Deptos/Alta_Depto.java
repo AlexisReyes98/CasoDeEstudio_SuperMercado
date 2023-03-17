@@ -139,12 +139,12 @@ public class Alta_Depto extends javax.swing.JFrame {
                 depto_db.altaDepto(d);
                 JOptionPane.showMessageDialog(null, "El departamento fue dado de alta con éxito","",JOptionPane.INFORMATION_MESSAGE);
             }
-            altaClave.setText("");
-            altaNombre.setText("");
-            altaJefe.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
         }
+        altaClave.setText("");
+        altaNombre.setText("");
+        altaJefe.setText("");
     }//GEN-LAST:event_altaDepartamentoActionPerformed
 
     /**
