@@ -123,12 +123,12 @@ public class Alta_Prod_Depto extends javax.swing.JFrame {
         boolean banAsigProd;
         if (!"".equals(altaClaveProd.getText()) && !"".equals(altaClaveDepto.getText())) {
             String clave_depto = altaClaveDepto.getText();
-            banDepto = depto_db.regresaDepto(clave_depto);
+            banDepto = depto_db.buscaDepto(clave_depto);
             if (banDepto) {
                 int clave_prod = Integer.parseInt(altaClaveProd.getText());
-                banProd = producto_db.regresaProducto(clave_prod);
+                banProd = producto_db.buscaProducto(clave_prod);
                 if (banProd) {
-                    banAsigProd = asigProd_db.regresaProducto(clave_prod);
+                    banAsigProd = asigProd_db.buscaProductoDepto(clave_prod);
                     if (banAsigProd) {
                         JOptionPane.showMessageDialog(null, "El producto ya estaba asignado","",JOptionPane.ERROR_MESSAGE);
                     } else {

@@ -100,7 +100,7 @@ public class Baja_Depto extends javax.swing.JFrame {
         if (!"".equals(clave_Depto.getText())) {
             String clave_depto = clave_Depto.getText();
             boolean ban;
-            ban = depto_db.regresaDepto(clave_depto);
+            ban = depto_db.buscaDepto(clave_depto);
             if (ban) {
                 depto_db.bajaDepto(clave_depto);
                 JOptionPane.showMessageDialog(null, "El departamento fue dado de baja con éxito","",JOptionPane.INFORMATION_MESSAGE);

@@ -101,7 +101,7 @@ public class Baja_Producto extends javax.swing.JFrame {
         if (!"".equals(clave_Producto.getText())) {
             int clave_prod = Integer.parseInt(clave_Producto.getText());
             boolean ban;
-            ban = producto_db.regresaProducto(clave_prod);
+            ban = producto_db.buscaProducto(clave_prod);
             if (ban) {
                 producto_db.bajaProducto(clave_prod);
                 JOptionPane.showMessageDialog(null, "El producto fue dado de baja con éxito","",JOptionPane.INFORMATION_MESSAGE);

@@ -128,7 +128,7 @@ public class Alta_Depto extends javax.swing.JFrame {
         if (!"".equals(altaClave.getText()) && !"".equals(altaNombre.getText()) && !"".equals(altaJefe.getText())) {
             String clave_depto = altaClave.getText();
             boolean banDepto;
-            banDepto = depto_db.regresaDepto(clave_depto);
+            banDepto = depto_db.buscaDepto(clave_depto);
             if (banDepto) {
                 JOptionPane.showMessageDialog(null, "El departamento con la clave proporcionada ya existe","",JOptionPane.ERROR_MESSAGE);
             } else {

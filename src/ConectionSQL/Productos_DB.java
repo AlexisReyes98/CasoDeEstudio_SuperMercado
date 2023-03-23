@@ -130,7 +130,7 @@ public class Productos_DB {
     }
     
     // Código para BUSCAR un producto en la tabla de la BD
-    public boolean regresaProducto(int clave_prod) {
+    public boolean buscaProducto(int clave_prod) {
         Connection cnx = DataBaseConexion.getConnection();
         Producto prod = new Producto();
         boolean ban = false;

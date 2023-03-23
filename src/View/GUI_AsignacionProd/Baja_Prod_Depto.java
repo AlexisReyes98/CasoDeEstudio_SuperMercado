@@ -120,10 +120,10 @@ public class Baja_Prod_Depto extends javax.swing.JFrame {
         boolean banAsigProd;
         if (!"".equals(bajaClaveProd.getText()) && !"".equals(bajaClaveDepto.getText())) {
             String clave_depto = bajaClaveDepto.getText();
-            banDepto = depto_db.regresaDepto(clave_depto);
+            banDepto = depto_db.buscaDepto(clave_depto);
             if (banDepto) {
                 int clave_prod = Integer.parseInt(bajaClaveProd.getText());
-                banAsigProd = asigProd_db.regresaProducto(clave_prod);
+                banAsigProd = asigProd_db.buscaProductoDepto(clave_prod);
                 if (banAsigProd) {
                     asigProd_db.bajaAsignacionProducto(clave_prod);
                     JOptionPane.showMessageDialog(null, "El producto fue dado de baja del Departamento","",JOptionPane.INFORMATION_MESSAGE);

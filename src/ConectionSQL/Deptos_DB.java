@@ -95,7 +95,7 @@ public class Deptos_DB {
     }
     
     // Código para BUSCAR un departamento en la tabla de la BD
-    public boolean regresaDepto(String clave_depto) {
+    public boolean buscaDepto(String clave_depto) {
         Connection cnx = DataBaseConexion.getConnection();
         Departamento depto = new Departamento();
         boolean ban = false;
