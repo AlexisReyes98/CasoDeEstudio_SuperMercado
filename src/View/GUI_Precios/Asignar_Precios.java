@@ -1,14 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package View.GUI_Precios;
+
+import ConectionSQL.Precios_DB;
+import ConectionSQL.Deptos_DB;
+import ConectionSQL.Productos_DB;
+import Model.Asignacion;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author alexis
  */
 public class Asignar_Precios extends javax.swing.JFrame {
+    Precios_DB precios_db = new Precios_DB();
+    Deptos_DB depto_db = new Deptos_DB();
+    Productos_DB producto_db = new Productos_DB();
 
     /**
      * Creates new form Asignar_Precios
@@ -30,6 +36,13 @@ public class Asignar_Precios extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         regresar_MenuPrecios = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        claveProd = new javax.swing.JTextField();
+        claveDepto = new javax.swing.JTextField();
+        actualizarPrecio = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        precioNuevo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,25 +56,70 @@ public class Asignar_Precios extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Clave del producto");
+
+        jLabel3.setText("Clave del departamento");
+
+        actualizarPrecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Precio.png"))); // NOI18N
+        actualizarPrecio.setText("Actualizar");
+        actualizarPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarPrecioActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Precio del producto a actualizar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(regresar_MenuPrecios)
-                    .addComponent(jLabel1))
-                .addContainerGap(89, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(209, 209, 209)
+                                .addComponent(actualizarPrecio))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(claveDepto)
+                                    .addComponent(precioNuevo)
+                                    .addComponent(claveProd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(regresar_MenuPrecios))))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(claveProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(claveDepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(precioNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addComponent(actualizarPrecio)
+                .addGap(28, 28, 28)
                 .addComponent(regresar_MenuPrecios)
-                .addGap(46, 46, 46))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -71,6 +129,34 @@ public class Asignar_Precios extends javax.swing.JFrame {
         new Menu_Precios().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_regresar_MenuPreciosActionPerformed
+
+    private void actualizarPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarPrecioActionPerformed
+        boolean banDepto;
+        boolean banProd;
+        if (!"".equals(claveProd.getText()) && !"".equals(claveDepto.getText())
+                && !"".equals(precioNuevo.getText())) {
+            String clave_depto = claveDepto.getText();
+            banDepto = depto_db.buscaDepto(clave_depto);
+            if (banDepto) {
+                int clave_prod = Integer.parseInt(claveProd.getText());
+                banProd = producto_db.buscaProducto(clave_prod);
+                if (banProd) {
+                    double pNuevo = Double.parseDouble(precioNuevo.getText());
+                    precios_db.actualizaPrecio(pNuevo, clave_prod, clave_depto);
+                    JOptionPane.showMessageDialog(null, "El precio quedó asignado","",JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "El producto no está en el depto","",JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay depto con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
+        }
+        claveProd.setText("");
+        claveDepto.setText("");
+        precioNuevo.setText("");
+    }//GEN-LAST:event_actualizarPrecioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,7 +194,14 @@ public class Asignar_Precios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizarPrecio;
+    private javax.swing.JTextField claveDepto;
+    private javax.swing.JTextField claveProd;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField precioNuevo;
     private javax.swing.JButton regresar_MenuPrecios;
     // End of variables declaration//GEN-END:variables
 }

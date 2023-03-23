@@ -44,14 +44,14 @@ public class Menu_Precios extends javax.swing.JFrame {
 
         jLabel1.setText("Menú Asignación de Precios");
 
-        asigPrecio.setText("Asignar un Precio a un Producto");
+        asigPrecio.setText("Asignar Precio a un Producto");
         asigPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 asigPrecioActionPerformed(evt);
             }
         });
 
-        verPrecios.setText("Consultar Precios de los Productos de un Departamento");
+        verPrecios.setText("Consultar Precios de Productos por Departamento");
         verPrecios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verPreciosActionPerformed(evt);
@@ -74,15 +74,15 @@ public class Menu_Precios extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addComponent(asigPrecio)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(verPrecios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(regresar_Menu)
-                .addGap(41, 41, 41))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();

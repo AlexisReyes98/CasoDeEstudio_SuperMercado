@@ -37,16 +37,16 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="asigPrecio" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="verPrecios" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="regresar_Menu" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,7 +70,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="asigPrecio">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Asignar un Precio a un Producto"/>
+        <Property name="text" type="java.lang.String" value="Asignar Precio a un Producto"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asigPrecioActionPerformed"/>
@@ -78,7 +78,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="verPrecios">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Consultar Precios de los Productos de un Departamento"/>
+        <Property name="text" type="java.lang.String" value="Consultar Precios de Productos por Departamento"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verPreciosActionPerformed"/>

@@ -39,7 +39,7 @@ public class Baja_Depto extends javax.swing.JFrame {
 
         jLabel1.setText("Baja de departamento:");
 
-        jLabel2.setText("Clave del departamento:");
+        jLabel2.setText("Clave del departamento");
 
         bajaDepto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Borrar.png"))); // NOI18N
         bajaDepto.setText("Dar de baja");

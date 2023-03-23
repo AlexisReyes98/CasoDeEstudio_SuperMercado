@@ -1,14 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package View.GUI_Precios;
+
+import ConectionSQL.Precios_DB;
+import ConectionSQL.Deptos_DB;
+import Model.Asignacion;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author alexis
  */
 public class Consultar_Precios extends javax.swing.JFrame {
+    Precios_DB precios_db = new Precios_DB();
+    Deptos_DB depto_db = new Deptos_DB();
 
     /**
      * Creates new form Consultar_Precios
@@ -17,6 +23,32 @@ public class Consultar_Precios extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Asignación de Precios a Productos");
         this.setLocationRelativeTo(null);
+    }
+    
+    public void listarDatos() { // Con esta función se muestra la tabla
+        boolean banDepto;
+        if (!"".equals(claveDepto.getText())) {
+            String clave_depto = claveDepto.getText();
+            banDepto = depto_db.buscaDepto(clave_depto);
+            if (banDepto) {
+                ArrayList<Asignacion> asignaciones;
+                asignaciones = precios_db.consultarProductos(clave_depto);
+                DefaultTableModel tb = (DefaultTableModel)tablaPrecios.getModel();
+                for(Asignacion a: asignaciones) {
+                    tb.addRow(new Object[]{a.getClaveProd(), a.getPrecio()});
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay depto con la clave proporcionada","",JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void limpiarFormulario() {   // Con esta función se limpia la tabla
+        DefaultTableModel tb = (DefaultTableModel)tablaPrecios.getModel();
+        for (int i=tb.getRowCount()-1; i>=0; i--)
+            tb.removeRow(i);
     }
 
     /**
@@ -30,6 +62,11 @@ public class Consultar_Precios extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         regresar_MenuPrecios = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaPrecios = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        claveDepto = new javax.swing.JTextField();
+        verPrecios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,25 +80,78 @@ public class Consultar_Precios extends javax.swing.JFrame {
             }
         });
 
+        tablaPrecios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Clave Producto", "Precio"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tablaPrecios);
+
+        jLabel2.setText("Clave del departamento");
+
+        verPrecios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Lupa.png"))); // NOI18N
+        verPrecios.setText("Consulta de Precios");
+        verPrecios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verPreciosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(regresar_MenuPrecios)
-                    .addComponent(jLabel1))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(verPrecios)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(claveDepto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(regresar_MenuPrecios)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(claveDepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(verPrecios)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(regresar_MenuPrecios)
-                .addGap(50, 50, 50))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -71,6 +161,11 @@ public class Consultar_Precios extends javax.swing.JFrame {
         new Menu_Precios().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_regresar_MenuPreciosActionPerformed
+
+    private void verPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPreciosActionPerformed
+        limpiarFormulario();
+        listarDatos();
+    }//GEN-LAST:event_verPreciosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,7 +203,12 @@ public class Consultar_Precios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField claveDepto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton regresar_MenuPrecios;
+    private javax.swing.JTable tablaPrecios;
+    private javax.swing.JButton verPrecios;
     // End of variables declaration//GEN-END:variables
 }

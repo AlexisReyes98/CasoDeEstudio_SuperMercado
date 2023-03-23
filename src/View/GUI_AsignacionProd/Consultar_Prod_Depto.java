@@ -64,7 +64,7 @@ public class Consultar_Prod_Depto extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProd = new javax.swing.JTable();
         verProd = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        regresar_MenuAsig = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         consultaProd = new javax.swing.JTextField();
 
@@ -101,11 +101,11 @@ public class Consultar_Prod_Depto extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Actualizar.png"))); // NOI18N
-        jButton2.setText("Regresar a Menú Asignación de Productos");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        regresar_MenuAsig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Actualizar.png"))); // NOI18N
+        regresar_MenuAsig.setText("Regresar a Menú Asignación de Productos");
+        regresar_MenuAsig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                regresar_MenuAsigActionPerformed(evt);
             }
         });
 
@@ -116,11 +116,10 @@ public class Consultar_Prod_Depto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(regresar_MenuAsig)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(75, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -151,17 +150,17 @@ public class Consultar_Prod_Depto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jButton2)
+                .addComponent(regresar_MenuAsig)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void regresar_MenuAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresar_MenuAsigActionPerformed
         new Menu_AsignacionProd().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_regresar_MenuAsigActionPerformed
 
     private void verProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verProdActionPerformed
         limpiarFormulario();
@@ -205,10 +204,10 @@ public class Consultar_Prod_Depto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField consultaProd;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton regresar_MenuAsig;
     private javax.swing.JTable tablaProd;
     private javax.swing.JButton verProd;
     // End of variables declaration//GEN-END:variables
