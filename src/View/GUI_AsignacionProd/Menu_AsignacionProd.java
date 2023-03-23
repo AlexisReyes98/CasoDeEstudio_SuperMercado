@@ -31,6 +31,7 @@ public class Menu_AsignacionProd extends javax.swing.JFrame {
         regresar_Menu = new javax.swing.JButton();
         altaProdDepto = new javax.swing.JButton();
         bajaProdDepto = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +59,13 @@ public class Menu_AsignacionProd extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Consultar Productos en un Departamento");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,24 +73,27 @@ public class Menu_AsignacionProd extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
                     .addComponent(regresar_Menu)
                     .addComponent(jLabel1)
                     .addComponent(bajaProdDepto)
                     .addComponent(altaProdDepto))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(altaProdDepto)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(bajaProdDepto)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(26, 26, 26)
                 .addComponent(regresar_Menu)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,6 +113,11 @@ public class Menu_AsignacionProd extends javax.swing.JFrame {
         new Baja_Prod_Depto().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bajaProdDeptoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new Consultar_Prod_Depto().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,6 +158,7 @@ public class Menu_AsignacionProd extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton altaProdDepto;
     private javax.swing.JButton bajaProdDepto;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton regresar_Menu;
     // End of variables declaration//GEN-END:variables

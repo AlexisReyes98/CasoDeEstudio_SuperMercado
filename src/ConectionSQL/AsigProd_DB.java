@@ -2,11 +2,13 @@
 package ConectionSQL;
 
 import Model.Asignacion;
+import Model.Producto;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -64,7 +66,7 @@ public class AsigProd_DB {
     }
     
     // Código para BUSCAR un producto en la tabla de la BD
-    public boolean regresaProducto(int clave_prod) {
+    public boolean buscaProductoDepto(int clave_prod) {
         Connection cnx = DataBaseConexion.getConnection();
         Asignacion asig = new Asignacion();
         boolean ban = false;
@@ -91,6 +93,58 @@ public class AsigProd_DB {
         }
         
         return ban;
+    }
+    
+    // Código para VER los productos en un departamento
+    public ArrayList<Producto> consultarProductos(String clave_depto) {
+        ArrayList<Producto> productos = new ArrayList();
+        Connection cnx = DataBaseConexion.getConnection();
+        try {
+            PreparedStatement pst = cnx.prepareStatement("SELECT CLAVE_PROD"
+                    + " FROM ASIG_PROD WHERE CLAVE_DEPTO like (?)");
+            pst.setString(1, clave_depto);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                productos.add(regresaProductoDepto(rs.getInt("CLAVE_PROD")));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("Error al obtener los datos de la tabla");
+        } finally {
+            try {
+                cnx.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex.getMessage());
+            }
+        }
+        return productos;
+    }
+    
+    // Código para REGRESAR un producto en la tabla de la BD
+    public Producto regresaProductoDepto(int clave_prod) {
+        Connection cnx = DataBaseConexion.getConnection();
+        Producto prod = new Producto();
+        try {
+            PreparedStatement pst = cnx.prepareStatement("SELECT CLAVE_PROD,NOMBRE,PROVEEDOR"
+                    + " FROM PRODUCTOS WHERE CLAVE_PROD like (?)");
+            pst.setInt(1, clave_prod);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                prod.setClaveProd(rs.getInt("CLAVE_PROD"));
+                prod.setNombre(rs.getString("NOMBRE"));
+                prod.setProveedor(rs.getString("PROVEEDOR"));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("Error al obtener el producto");
+        } finally {
+            try {
+                cnx.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex.getMessage());
+            }
+        }
+        return prod;
     }
     
 }
