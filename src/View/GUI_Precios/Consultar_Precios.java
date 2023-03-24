@@ -43,6 +43,7 @@ public class Consultar_Precios extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Porfavor, ingresa toda la información","",JOptionPane.ERROR_MESSAGE);
         }
+        claveDepto.setText("");
     }
     
     public void limpiarFormulario() {   // Con esta función se limpia la tabla

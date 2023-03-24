@@ -3,8 +3,7 @@ package View.GUI_Precios;
 
 import ConectionSQL.Precios_DB;
 import ConectionSQL.Deptos_DB;
-import ConectionSQL.Productos_DB;
-import Model.Asignacion;
+import ConectionSQL.AsigProd_DB;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +13,7 @@ import javax.swing.JOptionPane;
 public class Asignar_Precios extends javax.swing.JFrame {
     Precios_DB precios_db = new Precios_DB();
     Deptos_DB depto_db = new Deptos_DB();
-    Productos_DB producto_db = new Productos_DB();
+    AsigProd_DB asigProd_db = new AsigProd_DB();
 
     /**
      * Creates new form Asignar_Precios
@@ -139,7 +138,7 @@ public class Asignar_Precios extends javax.swing.JFrame {
             banDepto = depto_db.buscaDepto(clave_depto);
             if (banDepto) {
                 int clave_prod = Integer.parseInt(claveProd.getText());
-                banProd = producto_db.buscaProducto(clave_prod);
+                banProd = asigProd_db.buscaProductoDepto(clave_prod);
                 if (banProd) {
                     double pNuevo = Double.parseDouble(precioNuevo.getText());
                     precios_db.actualizaPrecio(pNuevo, clave_prod, clave_depto);

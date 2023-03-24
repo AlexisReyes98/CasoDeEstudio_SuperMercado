@@ -10,7 +10,7 @@ public class Producto {
     private String nombre;
     private String proveedor;
     
-    // Constructor basio
+    // Constructor vacío
     public Producto() {
     }
 

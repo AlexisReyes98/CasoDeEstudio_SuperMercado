@@ -10,7 +10,7 @@ public class Departamento {
     private String nombre;
     private String jefe;
 
-    // Constructor basio
+    // Constructor vacío
     public Departamento() {
     }
     

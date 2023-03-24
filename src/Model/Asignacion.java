@@ -10,7 +10,7 @@ public class Asignacion {
     private double precio;
     private String claveDepto;
 
-    // Constructor basio
+    // Constructor vacío
     public Asignacion() {
     }
     
