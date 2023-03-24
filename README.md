@@ -24,6 +24,8 @@ Asignación de Productos a los Departamentos
 
 Asignación de Precios a los Productos
 
+/////////
+
 Control de los Productos:
 
 Tarea #1.1.- Alta de productos
