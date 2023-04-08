@@ -1,6 +1,6 @@
 # CasoDeEstudio_SuperMercado
 
-UEA Metodologías Ágiles de Desarrollo de Sofware.
+UEA: Metodologías Ágiles de Desarrollo de Sofware.
 
 Metodología ágil usada: SCRUM.
 
