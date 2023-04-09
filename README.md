@@ -8,7 +8,7 @@ Lenguaje usado: Java
 
 Base de datos usada: Oracle SQL
 
-Sistema para el Control de los productos de un supermercado.
+Sistema para el control de productos de un supermercado.
 
 Producto de SW a desarrollar:
 
