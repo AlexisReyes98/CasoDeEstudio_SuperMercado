@@ -10,9 +10,7 @@ Base de datos usada: Oracle SQL
 
 Sistema para el control de productos de un supermercado.
 
-Producto de SW a desarrollar:
-
-Control de los Productos y Departamentos de un supermercado.
+Producto de SW a desarrollar: Control de los Productos y Departamentos de un supermercado.
 
 Con el sistema se pueden hacer las siguientes operaciones:
 
@@ -23,38 +21,6 @@ Control de los Departamentos
 Asignación de Productos a los Departamentos
 
 Asignación de Precios a los Productos
-
-/////////
-
-Control de los Productos:
-
-Tarea #1.1.- Alta de productos
-
-Tarea #1.2.- Consulta de productos
-
-Tarea #1.3.- Baja de productos
-
-Control de los Departamentos:
-
-Tarea #2.1.- Alta de departamentos
-
-Tarea #2.2.- Consulta de departamentos
-
-Tarea #2.3.- Baja de departamentos
-
-Asignación de Productos a los Departamentos:
-
-Tarea #3.1.- Alta de un producto en un departamento
-
-Tarea #3.2.- Baja de un producto en un departamento
-
-Tarea #3.3- Consulta de los productos de un departamento
-
-Asignación de Precios a los Productos:
-
-Tarea #4.1.- Asignar un precio a un producto
-
-Tarea #4.2.- Consultar precios de los productos de un departamento
 
 ![imagen](https://user-images.githubusercontent.com/72325257/227417042-8e4eb884-7418-4e17-afa9-3769d657bd1a.png)
 
