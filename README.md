@@ -1,4 +1,4 @@
-# CasoDeEstudio_SuperMercado
+# Caso De Estudio: Super Mercado
 
 UEA: Metodologías Ágiles de Desarrollo de Sofware.
 
